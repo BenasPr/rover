@@ -35,8 +35,8 @@ USER dev
 
 # Rust Install
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
-RUN /home/dev/.cargo/bin/rustup install 1.85.1
-RUN /home/dev/.cargo/bin/rustup default 1.85.1
+RUN /home/dev/.cargo/bin/rustup install 1.86.0
+RUN /home/dev/.cargo/bin/rustup default 1.86.0
 RUN /home/dev/.cargo/bin/rustup target add aarch64-unknown-linux-gnu
 
 # OpenAPI-cli install

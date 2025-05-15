@@ -582,7 +582,15 @@ impl App {
             // ports. After knowing the ports of all outputs, we can fill in the inputs.
             // Since we are valid, a given input will _always_ have an output.
             let fq = FqBuf::from(service);
-            let bootspec = bootspecs.get(&fq);
+            // let bootspec = bootspecs.get(&fq);
+
+            let bootspec = if let Ok(path) = std::env::var("BOOTSPEC_OVERRIDE_PATH") {
+                let file_content = std::fs::read_to_string(path)?;
+                serde_json::from_str(&file_content)?
+            } else {
+                bootspecs.get(&fq);
+            };
+
             let injected_env = serde_json::to_string(&bootspec)?;
 
             // Save the necessary information from each runnable service

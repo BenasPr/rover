@@ -1,0 +1,27 @@
+name: c-example
+author: benas
+source: github.com/author/c-example
+version: 0.0.1
+description: A template service in C
+
+# The alias "as: controller" allows this service to be recognized as "controller"
+# by other components (like the actuator), even if its actual name is different.
+# This allows us to change the name of the service without breaking the system.
+as: controller
+
+commands:
+  build: make build
+  run: ./bin/c-example
+
+inputs:
+  - service: imaging
+    streams:
+      - path
+outputs:
+  - decision
+
+configuration:
+  - name: speed
+    type: number
+    value: 0.2
+    tunable: true

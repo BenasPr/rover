@@ -1,0 +1,22 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: simple
+          # if we are not at v1.0.0 yet, breaking changes do not need to add a new major version
+          bump-minor-pre-major: true
+          pull-request-title-pattern: "chore: ${scope} release${component} ${version}"
+

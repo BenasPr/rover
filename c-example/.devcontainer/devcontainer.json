@@ -1,0 +1,25 @@
+{
+    "name": "ASE-roverlib-c",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "ms-vscode.cpptools", // C/C++ extension
+                "ms-vscode.cmake-tools", // CMake Tools extension
+                "ms-vscode.makefile-tools", // Makefile Tools extension
+                "dbankier.vscode-quick-select" // Quick select with cmd/ctrl+k "
+            ]
+        }
+    },
+    "capAdd": [
+        "SYS_PTRACE"
+    ],
+    "securityOpt": [
+        "seccomp=unconfined"
+    ],
+    "forwardPorts": []
+}
